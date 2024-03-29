@@ -59,6 +59,7 @@ public class FlightSearchController {
 	@PostMapping(path="/addFlights",produces = MediaType.APPLICATION_JSON_VALUE)
 	public String addFlight(@RequestBody Flight flight) {
 		frepo.save(flight);
+		flight.getFlight().stream().forEach(obj->{addFlightData(obj);});
 	return "Added Flight:" +flight.getFlight();
 	}
 	
